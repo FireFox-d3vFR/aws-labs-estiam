@@ -1,0 +1,37 @@
+[
+  {
+    "ProductId": "P002",
+    "Category": "Electronics",
+    "Name": "Smart Watch",
+    "Price": 149.99,
+    "InStock": true
+  },
+  {
+    "ProductId": "P003",
+    "Category": "Books",
+    "Name": "Clean Code",
+    "Price": 29.99,
+    "InStock": true
+  },
+  {
+    "ProductId": "P004",
+    "Category": "Books",
+    "Name": "The Pragmatic Programmer",
+    "Price": 34.99,
+    "InStock": false
+  },
+  {
+    "ProductId": "P005",
+    "Category": "Electronics",
+    "Name": "USB-C Hub",
+    "Price": 49.99,
+    "InStock": true
+  },
+  {
+    "ProductId": "P006",
+    "Category": "Home",
+    "Name": "Coffee Maker",
+    "Price": 89.99,
+    "InStock": true
+  }
+]

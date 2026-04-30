@@ -19,6 +19,7 @@ Thumbs.db
 *.pfx
 
 # Logs and temporary files
+tmp/
 *.log
 *.tmp
 *.bak
