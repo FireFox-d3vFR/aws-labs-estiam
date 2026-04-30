@@ -4,9 +4,9 @@ Depot de travaux pratiques AWS.
 
 ## Contenu
 
+- `lab1-environment-setup` : notes et commandes de validation du Lab 1.
 - `lab2-s3-dotnet` : projet .NET du Lab 2 sur Amazon S3.
 - `lab3-dynamodb-dotnet` : projet .NET du Lab 3 sur Amazon DynamoDB.
-- `lab1-environment-setup` : notes et commandes de validation du Lab 1.
 
 Les supports de cours PDF/HTML sont conserves localement mais ignores par Git.
 
