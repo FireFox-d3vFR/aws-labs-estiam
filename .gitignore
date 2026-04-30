@@ -1,0 +1,30 @@
+# .NET build outputs
+bin/
+obj/
+
+# User/local IDE files
+.vs/
+.vscode/
+*.user
+*.suo
+*.sln
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Local AWS/security files
+.aws/
+*.pem
+*.key
+*.pfx
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Course materials
+lab*.pdf
+slides_day*.html
+slides_day*_OPEN_WITH_A_WEB_BROWSER.html
