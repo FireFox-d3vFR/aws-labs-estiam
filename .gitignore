@@ -7,7 +7,6 @@ obj/
 .vscode/
 *.user
 *.suo
-*.sln
 
 # OS files
 Thumbs.db
