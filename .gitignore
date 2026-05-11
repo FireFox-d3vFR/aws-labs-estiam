@@ -24,6 +24,10 @@ tmp/
 *.tmp
 *.bak
 
+# Lab generated outputs
+lab4-lambda-dotnet/output*.json
+lab4-lambda-dotnet/HelloLambda/presigned*.json
+
 # Course materials
 lab*.pdf
 slides_day*.html
