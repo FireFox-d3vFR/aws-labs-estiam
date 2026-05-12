@@ -8,6 +8,7 @@ Depot de travaux pratiques AWS.
 - `lab2-s3-dotnet` : projet .NET du Lab 2 sur Amazon S3.
 - `lab3-dynamodb-dotnet` : projet .NET du Lab 3 sur Amazon DynamoDB.
 - `lab4-lambda-dotnet` : projet .NET du Lab 4 sur AWS Lambda.
+- `lab5-api-gateway` : configuration du Lab 5 sur Amazon API Gateway.
 
 Les supports de cours PDF/HTML sont conserves localement mais ignores par Git.
 
@@ -62,6 +63,21 @@ Le dossier `lab4-lambda-dotnet` prepare le developpement d'une fonction AWS Lamb
 - genere une URL S3 pre-signee valable 1 heure depuis un deuxieme handler.
 
 Voir la documentation detaillee dans [`lab4-lambda-dotnet/README.md`](lab4-lambda-dotnet/README.md).
+
+## Lab 5
+
+Le dossier `lab5-api-gateway` prepare une API REST Amazon API Gateway qui :
+
+- expose une ressource `/hello` ;
+- configure les methodes `GET`, `POST` et `OPTIONS` ;
+- integre les methodes `GET` et `POST` avec la Lambda `HelloLambda` du Lab 4 ;
+- adapte la Lambda au format Lambda Proxy Integration ;
+- active CORS pour les appels depuis un navigateur ;
+- ajoute un modele JSON Schema et une validation de body pour `POST` ;
+- deploie l'API sur un stage `dev` ;
+- teste les endpoints avec PowerShell ou `curl`.
+
+Voir la documentation detaillee dans [`lab5-api-gateway/README.md`](lab5-api-gateway/README.md).
 
 ## Avant de publier sur GitHub
 
