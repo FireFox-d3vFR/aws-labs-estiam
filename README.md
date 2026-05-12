@@ -9,6 +9,7 @@ Depot de travaux pratiques AWS.
 - `lab3-dynamodb-dotnet` : projet .NET du Lab 3 sur Amazon DynamoDB.
 - `lab4-lambda-dotnet` : projet .NET du Lab 4 sur AWS Lambda.
 - `lab5-api-gateway` : configuration du Lab 5 sur Amazon API Gateway.
+- `lab6-secured-serverless-api` : capstone du Lab 6 avec Cognito, API Gateway, Lambda et DynamoDB.
 
 Les supports de cours PDF/HTML sont conserves localement mais ignores par Git.
 
@@ -78,6 +79,20 @@ Le dossier `lab5-api-gateway` prepare une API REST Amazon API Gateway qui :
 - teste les endpoints avec PowerShell ou `curl`.
 
 Voir la documentation detaillee dans [`lab5-api-gateway/README.md`](lab5-api-gateway/README.md).
+
+## Lab 6
+
+Le dossier `lab6-secured-serverless-api` documente le capstone serverless securise qui :
+
+- cree un User Pool Cognito `HelloPool` et un App Client `HelloAppClient` ;
+- cree un utilisateur de test et recupere des tokens JWT ;
+- ajoute un Cognito Authorizer a `HelloAPI` ;
+- protege `GET /hello` et `POST /hello` tout en laissant `OPTIONS /hello` ouvert pour CORS ;
+- cree une table DynamoDB `ActivityLog` ;
+- met a jour `HelloLambda` pour lire les claims Cognito et ecrire un audit par appel ;
+- verifie HTTP 401 sans token, HTTP 200 avec token, puis les logs DynamoDB et CloudWatch.
+
+Voir la documentation detaillee dans [`lab6-secured-serverless-api/README.md`](lab6-secured-serverless-api/README.md).
 
 ## Avant de publier sur GitHub
 

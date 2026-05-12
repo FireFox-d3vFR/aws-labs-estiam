@@ -1,5 +1,7 @@
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.Model;
 using Amazon.S3;
 using Amazon.S3.Model;
 using System.Text.Json;
@@ -11,21 +13,42 @@ namespace HelloLambda;
 
 public class Function
 {
+    private const string ActivityLogTableName = "ActivityLog";
+    private static readonly IAmazonDynamoDB DynamoDb = new AmazonDynamoDBClient();
     private static readonly IAmazonS3 S3Client = new AmazonS3Client();
 
-    public APIGatewayProxyResponse FunctionHandler(APIGatewayProxyRequest request, ILambdaContext context)
+    public async Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyRequest request, ILambdaContext context)
     {
         var stage = Environment.GetEnvironmentVariable("STAGE") ?? "unknown";
         var name = GetName(request);
+        var claims = request.RequestContext?.Authorizer?.Claims ?? new Dictionary<string, string>();
+        var userId = claims.GetValueOrDefault("sub", "anonymous");
+        var email = claims.GetValueOrDefault("email", "unknown");
+        var timestamp = DateTime.UtcNow.ToString("o");
 
-        context.Logger.LogInformation($"[{stage}] {request.HttpMethod} /hello name={name}");
+        context.Logger.LogInformation($"[{stage}] {request.HttpMethod} /hello by {email} ({userId}) name={name}");
+
+        await DynamoDb.PutItemAsync(new PutItemRequest
+        {
+            TableName = ActivityLogTableName,
+            Item = new Dictionary<string, AttributeValue>
+            {
+                ["UserId"] = new() { S = userId },
+                ["Timestamp"] = new() { S = timestamp },
+                ["Email"] = new() { S = email },
+                ["Method"] = new() { S = request.HttpMethod },
+                ["Name"] = new() { S = name },
+                ["Stage"] = new() { S = stage }
+            }
+        });
 
         var body = JsonSerializer.Serialize(new
         {
             message = $"Hello, {name}!",
+            user = email,
             method = request.HttpMethod,
             stage,
-            timestamp = DateTime.UtcNow.ToString("o")
+            timestamp
         });
 
         return new APIGatewayProxyResponse
